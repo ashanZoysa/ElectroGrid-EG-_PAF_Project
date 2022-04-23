@@ -131,7 +131,7 @@ public class Econnection
 								return "Error while connecting to the database for updating.";
 								} 
 							// create a prepared statement
-							String query = "UPDATE connection_management SET connectionNo=?,userName=?,address=?,mainTown=?,postalCode=?,postNumber=?, WHERE connectionNo=?"; 
+							String query = "UPDATE connection_management SET userName=?,address=?,mainTown=?,postalCode=?,postNumber=? WHERE connectionNo=?"; 
 							PreparedStatement preparedStmt = con.prepareStatement(query); 
 							// binding values
 							
