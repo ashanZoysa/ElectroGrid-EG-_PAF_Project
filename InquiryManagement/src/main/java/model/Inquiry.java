@@ -36,14 +36,13 @@ public class Inquiry
 						} 
 						// create a prepared statement
 						
-						String query = " insert into inquiry_management (`inquiryNo`,`nic`,`name`,`address`,`postalCode`,`issue`)"+" values (?, ?, ?, ?, ?, ?)"; 
+						String query = " insert into inquiry_management (`nic`,`name`,`address`,`postalCode`,`issue`)"+" values ( ?, ?, ?, ?, ?)"; 
 						PreparedStatement preparedStmt = con.prepareStatement(query); 
 						// binding values
-						preparedStmt.setInt(1, 0); 
-						preparedStmt.setString(2, nic); 
-						preparedStmt.setString(3, name); 
-						preparedStmt.setString(4, address); 
-						preparedStmt.setString(5, postalcode); 
+						preparedStmt.setString(1, nic); 
+						preparedStmt.setString(2, name); 
+						preparedStmt.setString(3, address); 
+						preparedStmt.setString(4, postalcode); 
 						preparedStmt.setString(5, issue); 
 						// execute the statement
  
@@ -128,7 +127,7 @@ public class Inquiry
 								return "Error while connecting to the database for updating.";
 								} 
 							// create a prepared statement
-							String query = "UPDATE inquiry_management SET nic=?,name=?,address=?,postalCode=?,issue=?, WHERE inquiryNo=?"; 
+							String query = "UPDATE inquiry_management SET nic=?,name=?,address=?,postalCode=?,issue=? WHERE inquiryNo=?"; 
 							PreparedStatement preparedStmt = con.prepareStatement(query); 
 							// binding values
 							preparedStmt.setString(1, nic); 
@@ -136,7 +135,7 @@ public class Inquiry
 							preparedStmt.setString(3, address);
 							preparedStmt.setString(4, postalcode);
 							preparedStmt.setString(5, issue);
-							preparedStmt.setInt(5, Integer.parseInt(inquiryno)); 
+							preparedStmt.setInt(6, Integer.parseInt(inquiryno)); 
 							// execute the statement
 							preparedStmt.execute(); 
 							con.close(); 
@@ -165,7 +164,7 @@ public class Inquiry
 							return "Error while connecting to the database for deleting."; 
 							} 
 						// create a prepared statement
-						String query = "delete from inquiry where inquiryNo=?"; 
+						String query = "delete from inquiry_management where inquiryNo=?"; 
 						PreparedStatement preparedStmt = con.prepareStatement(query); 
 						// binding values
 						preparedStmt.setInt(1, Integer.parseInt(inquiryNo)); 
